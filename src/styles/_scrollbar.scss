@@ -1,0 +1,12 @@
+/* https://css-tricks.com/custom-scrollbars-in-webkit/ */
+::-webkit-scrollbar {
+  background-color: #fff;
+  border-left: 1px solid #fff;
+  width: 12.5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--rimac-red);
+  /* border-radius: 16px; */
+  outline: 10px solid transparent;
+}
