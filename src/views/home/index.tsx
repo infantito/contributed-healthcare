@@ -1,11 +1,11 @@
-import { Auth } from 'components'
+import { Step1 } from 'containers'
 import React from 'react'
 import './styles.scss'
 
 const App: React.FC = () => {
   return (
     <div>
-      <Auth />
+      <Step1 />
     </div>
   )
 }
