@@ -1,13 +1,13 @@
+import { Grid } from '@material-ui/core'
 import { Step1 } from 'containers'
 import React from 'react'
-import './styles.scss'
 
-const App: React.FC = () => {
+const Home: React.FC = () => {
   return (
-    <div>
+    <Grid item={true} sm={6}>
       <Step1 />
-    </div>
+    </Grid>
   )
 }
 
-export default App
+export default Home

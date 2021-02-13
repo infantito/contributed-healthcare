@@ -1,7 +1,6 @@
 import * as React from 'react'
-import { useHistory } from 'react-router-dom'
 import { Form as AuthForm } from 'react-final-form'
-import { TextField, Select, Checkboxes } from 'mui-rff'
+import { TextField, Select, Radios } from 'mui-rff'
 import {
   Button,
   FormControl,
@@ -9,39 +8,28 @@ import {
   MenuItem,
   Typography,
 } from '@material-ui/core'
-import { Routes } from 'utils/constants'
-import { fields, Values } from './utils'
+import ArrowIcon from '@material-ui/icons/KeyboardArrowRight'
+import { Values, initialValues, genders, people } from './utils'
 
 import './styles.scss'
-import { validate } from 'utils'
+import AddRelative from './add-relative'
 
-const initialValues = {
-  documentType: 'DNI',
-}
-
-const Step1: React.FC = () => {
-  const history = useHistory()
-
+const Step2: React.FC = () => {
   const handleSubmit = (values: Values) => {
     console.log(values)
-
-    history.push(Routes.RELATIVE)
   }
 
   return (
-    <div className="step-1 mx-auto py-5">
-      <Typography className="mb-1" variant="h5">
-        Obtén tu <span>seguro ahora</span>
+    <div className="step-2 mx-auto py-5">
+      <Typography className="mb-1" variant="h4">
+        Hola, <span>Luisa</span>
       </Typography>
-      <Typography variant="subtitle1" component="p">
-        Ingresa los datos para comenzar.
+      <Typography className="mb-6" variant="subtitle1" component="p">
+        Valida que los datos sean correctos.
       </Typography>
+      <Typography variant="h6">Datos personales del titular</Typography>
       <div className="mt-3">
-        <AuthForm
-          onSubmit={handleSubmit}
-          initialValues={initialValues}
-          validate={validate(fields)}
-        >
+        <AuthForm onSubmit={handleSubmit} initialValues={initialValues}>
           {formProps => {
             return (
               <form onSubmit={formProps.handleSubmit}>
@@ -60,11 +48,41 @@ const Step1: React.FC = () => {
                         label="Nro. de Documento"
                         placeholder="Nro. de Documento"
                         type="number"
-                        variant="outlined"
                         required={true}
+                        variant="outlined"
                       />
                     </Grid>
                   </Grid>
+                </FormControl>
+                <FormControl className="mb-2">
+                  <TextField
+                    name="name"
+                    label="Nombres"
+                    placeholder="Nombres"
+                    type="text"
+                    required={true}
+                    variant="outlined"
+                  />
+                </FormControl>
+                <FormControl className="mb-2">
+                  <TextField
+                    name="firstName"
+                    label="Apellido Paterno"
+                    placeholder="Apellido Paterno"
+                    type="text"
+                    required={true}
+                    variant="outlined"
+                  />
+                </FormControl>
+                <FormControl className="mb-2">
+                  <TextField
+                    name="lastName"
+                    label="Apellido Materno"
+                    placeholder="Apellido Materno"
+                    type="text"
+                    required={true}
+                    variant="outlined"
+                  />
                 </FormControl>
                 <FormControl className="mb-2">
                   <TextField
@@ -73,44 +91,33 @@ const Step1: React.FC = () => {
                     placeholder="Fecha de nacimiento"
                     type="text"
                     variant="outlined"
-                    required={true}
                   />
                 </FormControl>
                 <FormControl className="mb-2">
-                  <TextField
-                    name="phone"
-                    label="Celular"
-                    placeholder="Celular"
-                    type="tel"
-                    variant="outlined"
+                  <Radios
+                    className="mui-radios"
+                    label="Género"
+                    name="gender"
                     required={true}
+                    data={genders}
                   />
                 </FormControl>
                 <FormControl className="mb-2">
-                  <Checkboxes
-                    name="tyc1"
-                    color="primary"
-                    className="mui-checkbox"
-                    data={{
-                      label:
-                        'Acepto la Política de Protección de Datos Personales y los Términos y Condiciones.',
-                      value: true,
-                    }}
+                  <Radios
+                    className="mui-radios"
+                    label="¿A quién vamos a asegurar?"
+                    name="people"
                     required={true}
+                    data={people}
                   />
                 </FormControl>
-                <FormControl className="mb-2">
-                  <Checkboxes
-                    name="tyc2"
-                    color="primary"
-                    className="mui-checkbox"
-                    data={{
-                      label:
-                        'Acepto la Política de Envío de Comunicaciones Comerciales.',
-                      value: true,
-                    }}
-                    required={true}
-                  />
+                <FormControl>
+                  <Grid>
+                    <Typography variant="h6">
+                      Datos de los familiares
+                    </Typography>
+                  </Grid>
+                  <AddRelative />
                 </FormControl>
                 <FormControl className="mt-3">
                   <Button
@@ -119,8 +126,9 @@ const Step1: React.FC = () => {
                     className="mui-submit"
                     type="submit"
                     disabled={formProps.invalid || formProps.submitting}
+                    endIcon={<ArrowIcon />}
                   >
-                    Comencemos
+                    Continuar
                   </Button>
                 </FormControl>
               </form>
@@ -132,4 +140,4 @@ const Step1: React.FC = () => {
   )
 }
 
-export default Step1
+export default Step2

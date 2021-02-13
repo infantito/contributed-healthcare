@@ -1,0 +1,36 @@
+.step-2 {
+  max-width: calc(var(--spacing) * 60);
+  width: 100%;
+
+  h4,
+  h6 {
+    color: var(--rimac-title);
+    font-weight: 300;
+  }
+
+  h4 span {
+    color: var(--rimac-red);
+    font-weight: 600;
+  }
+
+  p {
+    color: var(--rimac-text);
+    font-weight: 300;
+  }
+
+  .MuiFormControl-root {
+    width: 100%;
+  }
+
+  .mui-select {
+    max-width: calc(var(--spacing) * 10.5);
+    width: 100%;
+  }
+
+  .mui-radios {
+    & + .MuiTypography-root {
+      color: var(--rimac-title);
+      font-weight: normal;
+    }
+  }
+}

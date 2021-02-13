@@ -1,14 +1,14 @@
-.auth {
+.step-1 {
   max-width: calc(var(--spacing) * 36);
   width: 100%;
 
   h5 {
     font-weight: 300;
-  }
 
-  span {
-    color: var(--rimac-red);
-    font-weight: 600;
+    span {
+      color: var(--rimac-red);
+      font-weight: 600;
+    }
   }
 
   p {
@@ -29,20 +29,6 @@
       color: var(--rimac-tyc);
       font-size: calc(var(--spacing) * 1.5);
       font-weight: 300;
-    }
-  }
-
-  .mui-submit {
-    background-color: var(--rimac-red);
-    height: calc(var(--spacing) * 6.5);
-    max-width: calc(var(--spacing) * 22);
-
-    .MuiButton-label {
-      color: #fff;
-    }
-
-    &:hover {
-      background-color: var(--rimac-red);
     }
   }
 }

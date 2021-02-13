@@ -1,0 +1,23 @@
+.MuiCheckbox-colorPrimary,
+.MuiRadio-colorSecondary {
+  &.Mui-checked {
+    color: var(--rimac-checked) !important;
+  }
+}
+
+.mui-submit {
+  height: calc(var(--spacing) * 6.5);
+  max-width: calc(var(--spacing) * 22);
+
+  &:not(:disabled) {
+    background-color: var(--rimac-red) !important;
+  }
+
+  .MuiButton-label {
+    color: #fff;
+  }
+
+  &:hover {
+    background-color: var(--rimac-red);
+  }
+}
