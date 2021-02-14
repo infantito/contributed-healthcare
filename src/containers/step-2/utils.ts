@@ -1,7 +1,7 @@
-export type RelativeType = 'spouse' | 'child'
+import { RelativeType } from 'utils/constants'
 
 export interface Relative {
-  type: string
+  type: RelativeType
   birthDate: string
 }
 
@@ -13,7 +13,7 @@ export interface Values {
   lastName: string
   birthDate: string
   gender: string
-  relativeType: string
+  relativeType: RelativeType
   relatives: string[]
 }
 

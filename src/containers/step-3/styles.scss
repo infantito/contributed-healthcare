@@ -1,0 +1,101 @@
+.step-3 {
+  max-width: calc(var(--spacing) * 60);
+  width: 100%;
+
+  h4,
+  h6 {
+    color: var(--rimac-title);
+    font-weight: 300;
+  }
+
+  h4 span {
+    color: var(--rimac-red);
+    font-weight: 600;
+  }
+
+  p {
+    color: var(--rimac-text);
+    font-weight: 300;
+  }
+
+  input[name='plan'] {
+    display: none;
+  }
+
+  .MuiFormControl-root {
+    width: 100%;
+  }
+
+  .plan {
+    cursor: pointer;
+  }
+
+  .mui-plan-label,
+  .mui-card {
+    width: 100%;
+  }
+
+  .mui-radios {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .mui-plan {
+    max-width: calc(var(--spacing) * 14);
+    width: 100%;
+  }
+
+  .mui-card {
+    height: calc(var(--spacing) * 15);
+    padding: calc(var(--spacing) * 2);
+    position: relative;
+    width: 100%;
+
+    &--checked {
+      border-color: var(--rimac-checked) !important;
+    }
+  }
+
+  .mui-radio {
+    display: block;
+    padding: 0;
+    position: absolute;
+    right: var(--spacing);
+    top: var(--spacing);
+  }
+
+  .card-type,
+  .card-monthly,
+  .card-amount {
+    user-select: none;
+  }
+
+  .card-type {
+    text-transform: uppercase;
+    font-size: calc(var(--spacing) * 1.25);
+  }
+
+  .card-monthly {
+    font-size: calc(var(--spacing) * 1.5);
+  }
+
+  .card-amount {
+    align-items: center;
+    display: flex;
+    font-size: calc(var(--spacing) * 3.5);
+    justify-content: center;
+
+    span {
+      font-size: calc(var(--spacing) * 3.5);
+    }
+  }
+
+  .MuiPaper-root {
+    border: 2px solid var(--rimac-card);
+    box-shadow: none;
+
+    .MuiTypography-root {
+      color: var(--rimac-title);
+    }
+  }
+}

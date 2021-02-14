@@ -5,6 +5,10 @@
   }
 }
 
+body .MuiTypography-root {
+  font-family: 'Lato', sans-serif;
+}
+
 .mui-submit {
   height: calc(var(--spacing) * 6.5);
   max-width: calc(var(--spacing) * 22);

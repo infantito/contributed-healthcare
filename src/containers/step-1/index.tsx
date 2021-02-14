@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { useHistory } from 'react-router-dom'
-import { Form as AuthForm } from 'react-final-form'
+import { Form } from 'react-final-form'
 import { TextField, Select, Checkboxes } from 'mui-rff'
 import {
   Button,
@@ -37,7 +37,7 @@ const Step1: React.FC = () => {
         Ingresa los datos para comenzar.
       </Typography>
       <div className="mt-3">
-        <AuthForm
+        <Form
           onSubmit={handleSubmit}
           initialValues={initialValues}
           validate={validate(fields)}
@@ -126,7 +126,7 @@ const Step1: React.FC = () => {
               </form>
             )
           }}
-        </AuthForm>
+        </Form>
       </div>
     </div>
   )

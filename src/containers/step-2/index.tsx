@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Form as AuthForm } from 'react-final-form'
+import { Form } from 'react-final-form'
 import { TextField, Select, Radios } from 'mui-rff'
 import {
   Button,
@@ -29,7 +29,7 @@ const Step2: React.FC = () => {
       </Typography>
       <Typography variant="h6">Datos personales del titular</Typography>
       <div className="mt-3">
-        <AuthForm onSubmit={handleSubmit} initialValues={initialValues}>
+        <Form onSubmit={handleSubmit} initialValues={initialValues}>
           {formProps => {
             return (
               <form onSubmit={formProps.handleSubmit}>
@@ -134,7 +134,7 @@ const Step2: React.FC = () => {
               </form>
             )
           }}
-        </AuthForm>
+        </Form>
       </div>
     </div>
   )
