@@ -1,18 +1,13 @@
 import * as React from 'react'
 import { Form } from 'react-final-form'
 import { useHistory } from 'react-router-dom'
-import { TextField, Select, Radios } from 'mui-rff'
-import {
-  Button,
-  FormControl,
-  Grid,
-  MenuItem,
-  Typography,
-} from '@material-ui/core'
+import { Radios } from 'mui-rff'
+import { Button, FormControl, Grid, Typography } from '@material-ui/core'
 import ArrowIcon from '@material-ui/icons/KeyboardArrowRight'
 import { constants } from 'utils'
 import AddRelative from './add-relative'
-import { Values, initialValues, genders, people } from './utils'
+import NewPersonal from './new-personal'
+import { Values, initialValues, people } from './utils'
 
 const Step2: React.FC = () => {
   const history = useHistory()
@@ -28,75 +23,7 @@ const Step2: React.FC = () => {
       {formProps => {
         return (
           <form onSubmit={formProps.handleSubmit}>
-            <FormControl className="mb-2">
-              <Grid container={true} wrap="nowrap">
-                <Grid item={true} className="mui-select">
-                  <Select name="documentType" variant="outlined">
-                    <MenuItem value="DNI">DNI</MenuItem>
-                    <MenuItem value="RUC">RUC</MenuItem>
-                    <MenuItem value="CE">CE</MenuItem>
-                  </Select>
-                </Grid>
-                <Grid className="w-100">
-                  <TextField
-                    name="documentNumber"
-                    label="Nro. de Documento"
-                    placeholder="Nro. de Documento"
-                    type="number"
-                    required={true}
-                    variant="outlined"
-                  />
-                </Grid>
-              </Grid>
-            </FormControl>
-            <FormControl className="mb-2">
-              <TextField
-                name="name"
-                label="Nombres"
-                placeholder="Nombres"
-                type="text"
-                required={true}
-                variant="outlined"
-              />
-            </FormControl>
-            <FormControl className="mb-2">
-              <TextField
-                name="firstName"
-                label="Apellido Paterno"
-                placeholder="Apellido Paterno"
-                type="text"
-                required={true}
-                variant="outlined"
-              />
-            </FormControl>
-            <FormControl className="mb-2">
-              <TextField
-                name="lastName"
-                label="Apellido Materno"
-                placeholder="Apellido Materno"
-                type="text"
-                required={true}
-                variant="outlined"
-              />
-            </FormControl>
-            <FormControl className="mb-2">
-              <TextField
-                name="birthDate"
-                label="Fecha de nacimiento"
-                placeholder="Fecha de nacimiento"
-                type="text"
-                variant="outlined"
-              />
-            </FormControl>
-            <FormControl className="mb-2">
-              <Radios
-                className="mui-radios"
-                label="Género"
-                name="gender"
-                required={true}
-                data={genders}
-              />
-            </FormControl>
+            <NewPersonal />
             <FormControl className="mb-2">
               <Radios
                 className="mui-radios"
