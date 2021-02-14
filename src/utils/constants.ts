@@ -4,6 +4,7 @@ export enum Routes {
   HOME = '/',
   RELATIVE = '/relative',
   PLANS = '/plans',
+  THANKS = '/thanks',
 }
 
 export const RELATIVE_AMOUNT = {

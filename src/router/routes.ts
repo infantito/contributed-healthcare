@@ -1,6 +1,6 @@
 import { RouteConfig } from 'react-router-config'
 import { Routes } from 'utils/constants'
-import { Home, Relative, Plans } from 'views'
+import { Home, Relative, Plans, Thanks } from 'views'
 
 const routes: RouteConfig[] = [
   {
@@ -17,6 +17,11 @@ const routes: RouteConfig[] = [
     path: Routes.PLANS,
     exact: true,
     component: Plans,
+  },
+  {
+    path: Routes.THANKS,
+    exact: true,
+    component: Thanks,
   },
 ]
 

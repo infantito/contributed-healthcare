@@ -1,0 +1,29 @@
+.thanks {
+  max-width: calc(var(--spacing) * 60);
+  width: 100%;
+
+  h4,
+  h6 {
+    color: var(--rimac-title);
+    font-weight: 300;
+  }
+
+  h4 span {
+    color: var(--rimac-red);
+    font-weight: 600;
+  }
+
+  p {
+    color: var(--rimac-text);
+    font-weight: 300;
+  }
+
+  img {
+    bottom: calc(var(--spacing) * -1);
+    height: calc(var(--spacing) * 18.125);
+    position: relative;
+    right: 0;
+    width: calc(var(--spacing) * 15.25);
+    z-index: 1;
+  }
+}

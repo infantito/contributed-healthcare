@@ -16,7 +16,6 @@ const Router: React.FC = () => {
           <Header />
           {renderRoutes(routes)}
         </Grid>
-        <div>BACK-BOTTOM</div>
       </Switch>
     </Container>
   )
