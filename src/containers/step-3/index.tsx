@@ -2,16 +2,16 @@ import * as React from 'react'
 import { Form } from 'react-final-form'
 import { useHistory } from 'react-router-dom'
 import { Button, FormControl, Grid, RadioGroup } from '@material-ui/core'
-import { validate, constants } from 'utils'
-import { initialValues, PLANS, Values } from './utils'
+import { validate, constants, storage } from 'utils'
+import { initialValues, PLANS, Props, Values } from './utils'
 import Plan from './plan'
 import Relatives from './relatives'
 
-const Step3: React.FC = () => {
+const Step3: React.FC<Props> = props => {
   const history = useHistory()
 
   const handleSubmit = (values: Values) => {
-    console.log(values)
+    storage.remove('current')
 
     history.push(constants.Routes.THANKS)
   }
@@ -35,7 +35,7 @@ const Step3: React.FC = () => {
               </RadioGroup>
             </FormControl>
             <FormControl className="mb-2">
-              <Relatives relatives={[]} />
+              <Relatives relatives={props.insured.family} />
             </FormControl>
             <FormControl className="mt-3">
               <Button

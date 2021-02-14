@@ -1,8 +1,13 @@
-export interface Values {
-  documentType: string
+import { DocumentType } from 'utils'
+
+export interface Query {
+  documentType: DocumentType
   documentNumber: string
-  birthDate: string
-  phone: string
+}
+
+export interface Values {
+  documentType: DocumentType
+  documentNumber: string
   tyc1: boolean
   tyc2: boolean
 }
@@ -17,10 +22,18 @@ export interface Errors {
 }
 
 export const fields: Values = {
-  documentType: '',
+  documentType: DocumentType.DNI,
   documentNumber: '',
-  birthDate: '',
-  phone: '',
   tyc1: false,
   tyc2: false,
+}
+
+export const allowedTargets = ['documentType', 'documentNumber']
+
+export const isDebouncedValue = (
+  event: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>,
+) => {
+  const target = event.target.name
+
+  return allowedTargets.includes(target)
 }

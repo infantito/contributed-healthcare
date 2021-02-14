@@ -1,14 +1,31 @@
-import { FormControl, Grid, MenuItem } from '@material-ui/core'
-import { TextField, Select, Radios } from 'mui-rff'
-import { genders } from './utils'
+import {
+  FormControl,
+  FormControlLabel,
+  FormLabel,
+  Grid,
+  InputAdornment,
+  MenuItem,
+  RadioGroup,
+  Select,
+  TextField,
+  Radio,
+} from '@material-ui/core'
+import CalendarIcon from '@material-ui/icons/Event'
+import { GENDERS, Props } from './utils'
 
-const OldPersonal: React.FC = () => {
+const OldPersonal: React.FC<Props> = ({ insured }) => {
   return (
     <>
       <FormControl className="mb-2">
         <Grid container={true} wrap="nowrap">
           <Grid item={true} className="mui-document">
-            <Select name="documentType" variant="outlined">
+            <Select
+              name="documentType"
+              variant="outlined"
+              value={insured.id.name}
+              onChange={null}
+              readOnly={true}
+            >
               <MenuItem value="DNI">DNI</MenuItem>
               <MenuItem value="RUC">RUC</MenuItem>
               <MenuItem value="CE">CE</MenuItem>
@@ -22,6 +39,11 @@ const OldPersonal: React.FC = () => {
               type="number"
               required={true}
               variant="outlined"
+              value={insured.id.value}
+              onChange={null}
+              InputProps={{
+                readOnly: true,
+              }}
             />
           </Grid>
         </Grid>
@@ -34,6 +56,11 @@ const OldPersonal: React.FC = () => {
           type="text"
           required={true}
           variant="outlined"
+          value={insured.name.first}
+          onChange={null}
+          InputProps={{
+            readOnly: true,
+          }}
         />
       </FormControl>
       <FormControl className="mb-2">
@@ -44,6 +71,11 @@ const OldPersonal: React.FC = () => {
           type="text"
           required={true}
           variant="outlined"
+          value={insured.name.last}
+          onChange={null}
+          InputProps={{
+            readOnly: true,
+          }}
         />
       </FormControl>
       <FormControl className="mb-2">
@@ -54,6 +86,11 @@ const OldPersonal: React.FC = () => {
           type="text"
           required={true}
           variant="outlined"
+          value={insured.name.last}
+          onChange={null}
+          InputProps={{
+            readOnly: true,
+          }}
         />
       </FormControl>
       <FormControl className="mb-2">
@@ -63,16 +100,35 @@ const OldPersonal: React.FC = () => {
           placeholder="Fecha de nacimiento"
           type="text"
           variant="outlined"
+          InputProps={{
+            readOnly: true,
+            endAdornment: (
+              <InputAdornment position="end">
+                <CalendarIcon />
+              </InputAdornment>
+            ),
+          }}
+          value={insured.dob.date.split('T')[0]}
+          onChange={null}
         />
       </FormControl>
       <FormControl className="mb-2">
-        <Radios
+        <FormLabel component="legend">Género</FormLabel>
+        <RadioGroup
           className="mui-radios"
-          label="Género"
           name="gender"
-          required={true}
-          data={genders}
-        />
+          value={insured.gender}
+          onChange={null}
+        >
+          {GENDERS.map(gender => (
+            <FormControlLabel
+              key={gender.value}
+              label={gender.label}
+              value={gender.value}
+              control={<Radio />}
+            />
+          ))}
+        </RadioGroup>
       </FormControl>
     </>
   )

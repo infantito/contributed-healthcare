@@ -22,7 +22,7 @@ const Relative: React.FC = () => {
           <Title insured={insured} />
           <Typography variant="h6">Datos personales del titular</Typography>
           <div className="mt-3">
-            <Step2 />
+            <Step2 insured={insured} />
           </div>
         </SiteContent>
       </div>

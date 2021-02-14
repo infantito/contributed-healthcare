@@ -1,7 +1,9 @@
-import { FormControl } from '@material-ui/core'
-import { TextField } from 'mui-rff'
+import { FormControl, TextField } from '@material-ui/core'
+import { Props } from './utils'
 
-const NewPersonal: React.FC = () => {
+const NewPersonal: React.FC<Props> = ({ insured }) => {
+  const fullName = `${insured.name.first} ${insured.name.last}`
+
   return (
     <FormControl className="mb-2">
       <TextField
@@ -11,6 +13,11 @@ const NewPersonal: React.FC = () => {
         type="text"
         required={true}
         variant="outlined"
+        value={fullName}
+        onChange={null}
+        InputProps={{
+          readOnly: true,
+        }}
       />
     </FormControl>
   )

@@ -6,7 +6,9 @@ const Title: React.FC<{ insured: Insured }> = ({ insured }) => {
     <>
       <Typography className="mb-1" variant="h4">
         Hola,{' '}
-        <span>{insured.hasHealthCare ? insured.name : '¡empecemos!'}</span>
+        <span>
+          {insured.hasHealthCare ? insured.name.first : '¡empecemos!'}
+        </span>
       </Typography>
       <Typography className="mb-6" variant="subtitle1" component="p">
         {insured.hasHealthCare

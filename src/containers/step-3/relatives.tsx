@@ -7,7 +7,7 @@ import {
 } from '@material-ui/core'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import { RelativesProps } from './utils'
-import { RELATIVE_AMOUNT } from 'utils/constants'
+import { RelativeType, RELATIVE_AMOUNT } from 'utils/constants'
 
 const Relatives: React.FC<RelativesProps> = props => {
   return (
@@ -27,9 +27,17 @@ const Relatives: React.FC<RelativesProps> = props => {
         </AccordionSummary>
         <AccordionDetails>
           {props.relatives.map(relative => (
-            <Box display="flex" justifyContent="space-between">
+            <Box
+              key={relative.id}
+              display="flex"
+              justifyContent="space-between"
+            >
               <Typography>{relative.type}</Typography>
-              <Typography>{RELATIVE_AMOUNT[relative.type]}</Typography>
+              <Typography>
+                {relative.type === RelativeType.CHILD
+                  ? RELATIVE_AMOUNT.CHILD
+                  : RELATIVE_AMOUNT.SPOUSE}
+              </Typography>
             </Box>
           ))}
         </AccordionDetails>

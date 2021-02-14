@@ -25,7 +25,7 @@ const Plans: React.FC = () => {
             Selecciona tu plan de salud ideal.
           </Typography>
           <div className="mt-3">
-            <Step3 />
+            <Step3 insured={insured} />
           </div>
         </SiteContent>
       </div>

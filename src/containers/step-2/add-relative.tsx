@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { useField, useForm } from 'react-final-form'
 import {
   Button,
   FormControl,
@@ -6,19 +7,24 @@ import {
   List,
   MenuItem,
   Select,
-  TextField,
   Typography,
 } from '@material-ui/core'
+import DateFnsUtils from '@date-io/date-fns'
+import {
+  MuiPickersUtilsProvider,
+  KeyboardDatePicker,
+} from '@material-ui/pickers'
+import { MaterialUiPickersDate } from '@material-ui/pickers/typings/date'
+import { RelativeType } from 'utils/constants'
 import Relative from './relative'
-import { initialRelative, Relative as RelativeType } from './utils'
-import { useField, useForm } from 'react-final-form'
+import { initialRelative, Relative as RelativeState } from './utils'
 
 const AddRelative: React.FC = () => {
-  const [relatives, setRelatives] = React.useState<Map<string, RelativeType>>(
+  const [relatives, setRelatives] = React.useState<Map<string, RelativeState>>(
     new Map(),
   )
 
-  const [relative, setRelative] = React.useState<RelativeType>(initialRelative)
+  const [relative, setRelative] = React.useState<RelativeState>(initialRelative)
 
   const handleChangeRelativeType = (event: any) => {
     event.persist()
@@ -41,7 +47,7 @@ const AddRelative: React.FC = () => {
 
       const id: string = now.toString(36)
 
-      map.set(id, relative)
+      map.set(id, { ...relative, id })
 
       return map
     })
@@ -73,7 +79,8 @@ const AddRelative: React.FC = () => {
     return null
   }
 
-  const isButtonDisabled = relative.type === '-' || !relative.birthDate
+  const isButtonDisabled =
+    relative.type === RelativeType.NONE || !relative.birthDate
 
   return (
     <FormControl>
@@ -89,23 +96,37 @@ const AddRelative: React.FC = () => {
               value={relative.type}
               onChange={handleChangeRelativeType}
             >
-              <MenuItem value="-" disabled={true}>
+              <MenuItem value={RelativeType.NONE} disabled={true}>
                 Vínculo
               </MenuItem>
-              <MenuItem value="spouse">Cónyuge</MenuItem>
-              <MenuItem value="child">Hijo</MenuItem>
+              <MenuItem value={RelativeType.SPOUSE}>Cónyuge</MenuItem>
+              <MenuItem value={RelativeType.CHILD}>Hijo</MenuItem>
             </Select>
           </Grid>
           <Grid item={true} sm={6}>
-            <TextField
-              name="birthDate"
-              label="Fecha de nacimiento"
-              placeholder="Fecha de nacimiento"
-              type="text"
-              variant="outlined"
-              value={relative.birthDate}
-              onChange={handleChangeRelativeType}
-            />
+            <MuiPickersUtilsProvider utils={DateFnsUtils}>
+              <KeyboardDatePicker
+                className="mui-date"
+                margin="normal"
+                id="birthDate"
+                name="birthDate"
+                format="MM/dd/yyyy"
+                value={relative.birthDate}
+                onChange={(date: MaterialUiPickersDate, value: string) =>
+                  handleChangeRelativeType({
+                    target: {
+                      value,
+                      name: 'birthDate',
+                    },
+                    persist: () => {},
+                  })
+                }
+                inputVariant="outlined"
+                KeyboardButtonProps={{
+                  'aria-label': 'seleccionar fecha',
+                }}
+              />
+            </MuiPickersUtilsProvider>
           </Grid>
           <Grid item={true} sm={3}>
             <Button

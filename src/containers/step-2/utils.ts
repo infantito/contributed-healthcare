@@ -1,4 +1,9 @@
+import { Insured } from 'utils'
 import { RelativeType } from 'utils/constants'
+
+export interface Props {
+  insured: Insured
+}
 
 export interface Relative {
   id: string
@@ -6,80 +11,68 @@ export interface Relative {
   birthDate: string
 }
 
-export interface HealthCareValues {
-  documentType: string
-  documentNumber: string
-  name: string
-  firstName: string
-  lastName: string
-  birthDate: string
-  gender: string
-  relatives: Relative[]
-}
-
-export interface FamilyCareValues extends Pick<HealthCareValues, 'relatives'> {
-  fullName: string
-}
-
-export const initialValues = {
-  documentType: 'DNI',
-  relative: {
-    type: '-',
-    birthDate: '',
-  },
-}
+export const initialValues = {}
 
 export interface RelativeProps extends Relative {
   id: string
   handleRemove: (id: string) => (event: React.MouseEvent) => void
 }
 
-export const genders = [
+export const GENDERS = [
   {
     label: 'Masculino',
-    value: 'masculino',
+    value: 'male',
   },
   {
     label: 'Femenino',
-    value: 'femenino',
+    value: 'female',
   },
 ]
 
-export const people = [
+export enum RelativeKind {
+  ME = 'me',
+  FAMILY = 'family',
+}
+
+export interface HealthCareValues {
+  people: RelativeKind
+  relatives: Relative[]
+}
+
+export interface RelativeField {
+  label: string
+  value: RelativeKind
+}
+
+export const PEOPLE: RelativeField[] = [
   {
     label: 'Solo a mí',
-    value: 'me',
+    value: RelativeKind.ME,
   },
   {
     label: 'A mí y a mi familia',
-    value: 'family',
+    value: RelativeKind.FAMILY,
   },
 ]
 
 export const initialRelative: Relative = {
   id: '',
-  type: '-',
-  birthDate: '',
+  type: RelativeType.NONE,
+  birthDate: '2021-01-01',
 }
 
-export const getFields = (
-  hasHealthCare: boolean,
-): HealthCareValues | FamilyCareValues => {
-  if (hasHealthCare) {
+export const validate = (values: HealthCareValues) => {
+  if (values.people === RelativeKind.FAMILY && values.relatives.length === 0) {
     return {
-      documentType: '',
-      documentNumber: '',
-      name: '',
-      firstName: '',
-      lastName: '',
-      birthDate: '',
-      gender: '',
-      relatives: [],
+      people: 'Agregar familiar',
     }
   }
 
-  return {
-    fullName: '',
-    relatives: [],
+  if (!values.people) {
+    return {
+      people: 'Campo requerido',
+    }
   }
+
+  return {}
 }

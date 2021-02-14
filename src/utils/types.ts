@@ -1,5 +1,11 @@
 import { Relative } from 'containers/step-2/utils'
 
+export enum DocumentType {
+  DNI = 'DNI',
+  RUC = 'RUC',
+  CE = 'CE',
+}
+
 export interface Name {
   title: string
   first: string
@@ -42,12 +48,12 @@ export interface Login {
 }
 
 export interface Dob {
-  date: Date
+  date: string
   age: number
 }
 
 export interface Registered {
-  date: Date
+  date: string
   age: number
 }
 

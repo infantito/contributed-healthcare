@@ -1,5 +1,10 @@
 import { FieldRenderProps } from 'react-final-form'
 import { Relative } from 'containers/step-2/utils'
+import { Insured } from 'utils'
+
+export interface Props {
+  insured: Insured
+}
 
 export enum PlanType {
   BASIC = 'básico',
