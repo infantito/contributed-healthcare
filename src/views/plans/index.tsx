@@ -1,11 +1,19 @@
+import { Redirect } from 'react-router-dom'
 import { Grid, Typography } from '@material-ui/core'
 import { SiteContent } from 'components'
 import { Step3 } from 'containers'
-import React from 'react'
+import { useInsured } from 'hooks'
+import { Routes } from 'utils/constants'
 
 import './styles.scss'
 
 const Plans: React.FC = () => {
+  const insured = useInsured()
+
+  if (!insured) {
+    return <Redirect to={Routes.HOME} />
+  }
+
   return (
     <Grid item={true} sm={8}>
       <div className="step-3 mx-auto py-5">

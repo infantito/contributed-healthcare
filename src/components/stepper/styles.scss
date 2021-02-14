@@ -1,5 +1,6 @@
 .mui-stepper {
   .MuiStepIcon-root {
+    &.MuiStepIcon-active,
     &.MuiStepIcon-completed {
       color: var(--rimac-red);
     }

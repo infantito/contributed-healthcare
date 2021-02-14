@@ -2,28 +2,39 @@ import * as React from 'react'
 import { Form } from 'react-final-form'
 import { useHistory } from 'react-router-dom'
 import { Radios } from 'mui-rff'
-import { Button, FormControl, Grid, Typography } from '@material-ui/core'
+import { Button, FormControl } from '@material-ui/core'
 import ArrowIcon from '@material-ui/icons/KeyboardArrowRight'
-import { constants } from 'utils'
+import { useInsured } from 'hooks'
+import { constants, validate } from 'utils'
 import AddRelative from './add-relative'
 import NewPersonal from './new-personal'
-import { Values, initialValues, people } from './utils'
+import OldPersonal from './old-personal'
+import { getFields, HealthCareValues, initialValues, people } from './utils'
 
 const Step2: React.FC = () => {
   const history = useHistory()
 
-  const handleSubmit = (values: Values) => {
-    console.log(values)
+  const insured = useInsured()
+
+  const handleSubmit = (values: HealthCareValues) => {
+    insured.family = values.relatives
 
     history.push(constants.Routes.PLANS)
   }
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const fields = React.useMemo(() => getFields(insured.hasHealthCare), [])
+
   return (
-    <Form onSubmit={handleSubmit} initialValues={initialValues}>
+    <Form
+      onSubmit={handleSubmit}
+      initialValues={initialValues}
+      validate={validate(fields)}
+    >
       {formProps => {
         return (
           <form onSubmit={formProps.handleSubmit}>
-            <NewPersonal />
+            {insured.hasHealthCare ? <OldPersonal /> : <NewPersonal />}
             <FormControl className="mb-2">
               <Radios
                 className="mui-radios"
@@ -33,12 +44,7 @@ const Step2: React.FC = () => {
                 data={people}
               />
             </FormControl>
-            <FormControl>
-              <Grid>
-                <Typography variant="h6">Datos de los familiares</Typography>
-              </Grid>
-              <AddRelative />
-            </FormControl>
+            <AddRelative />
             <FormControl className="mt-3">
               <Button
                 variant="contained"

@@ -3,15 +3,33 @@ import { useHistory } from 'react-router-dom'
 import { Form } from 'react-final-form'
 import { TextField, Select, Checkboxes } from 'mui-rff'
 import { Button, FormControl, Grid, MenuItem } from '@material-ui/core'
-import { validate, constants } from 'utils'
+import { validate, constants, Results, storage } from 'utils'
 import { fields, Values } from './utils'
 import { initialValues } from './constants'
 
 const Step1: React.FC = () => {
   const history = useHistory()
 
-  const handleSubmit = (values: Values) => {
-    console.log(values)
+  const handleSubmit = async (values: Values) => {
+    const response = await fetch(constants.DOMAIN)
+
+    const data: Results = await response.json()
+
+    let insured = data.results[0]
+
+    const keyName = `${values.documentType}-${values.documentNumber}|${insured.login.uuid}`
+
+    const keptInsured = JSON.parse(storage.get(keyName))
+
+    if (!keptInsured) {
+      insured.hasHealthCare = false
+
+      storage.set(keyName, insured)
+    } else {
+      insured.hasHealthCare = true
+    }
+
+    storage.set('current', keptInsured || insured)
 
     history.push(constants.Routes.RELATIVE)
   }

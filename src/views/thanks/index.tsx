@@ -1,10 +1,18 @@
-import * as React from 'react'
+import { Redirect } from 'react-router-dom'
 import { Box, Button, Divider, Typography } from '@material-ui/core'
+import { useInsured } from 'hooks'
+import { Routes } from 'utils/constants'
 import man from 'assets/happy-man.png'
 
 import './styles.scss'
 
 const Thanks: React.FC = () => {
+  const insured = useInsured()
+
+  if (!insured) {
+    return <Redirect to={Routes.HOME} />
+  }
+
   return (
     <div className="thanks mx-auto py-5">
       <Box textAlign="right">

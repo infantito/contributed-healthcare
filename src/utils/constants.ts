@@ -1,4 +1,4 @@
-export type RelativeType = 'spouse' | 'child'
+export type RelativeType = '-' | 'spouse' | 'child'
 
 export enum Routes {
   HOME = '/',
@@ -8,6 +8,7 @@ export enum Routes {
 }
 
 export const RELATIVE_AMOUNT = {
+  '-': 0,
   spouse: 40,
   child: 60,
 } as const

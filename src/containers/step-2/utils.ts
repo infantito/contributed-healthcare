@@ -1,11 +1,12 @@
 import { RelativeType } from 'utils/constants'
 
 export interface Relative {
+  id: string
   type: RelativeType
   birthDate: string
 }
 
-export interface Values {
+export interface HealthCareValues {
   documentType: string
   documentNumber: string
   name: string
@@ -13,8 +14,11 @@ export interface Values {
   lastName: string
   birthDate: string
   gender: string
-  relativeType: RelativeType
-  relatives: string[]
+  relatives: Relative[]
+}
+
+export interface FamilyCareValues extends Pick<HealthCareValues, 'relatives'> {
+  fullName: string
 }
 
 export const initialValues = {
@@ -26,7 +30,8 @@ export const initialValues = {
 }
 
 export interface RelativeProps extends Relative {
-  handleRemove: (event: React.MouseEvent) => void
+  id: string
+  handleRemove: (id: string) => (event: React.MouseEvent) => void
 }
 
 export const genders = [
@@ -50,3 +55,31 @@ export const people = [
     value: 'family',
   },
 ]
+
+export const initialRelative: Relative = {
+  id: '',
+  type: '-',
+  birthDate: '',
+}
+
+export const getFields = (
+  hasHealthCare: boolean,
+): HealthCareValues | FamilyCareValues => {
+  if (hasHealthCare) {
+    return {
+      documentType: '',
+      documentNumber: '',
+      name: '',
+      firstName: '',
+      lastName: '',
+      birthDate: '',
+      gender: '',
+      relatives: [],
+    }
+  }
+
+  return {
+    fullName: '',
+    relatives: [],
+  }
+}

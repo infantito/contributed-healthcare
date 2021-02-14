@@ -1,17 +1,9 @@
-import localforage from 'localforage'
-
-const dbName = 'rimac'
-
-export const storage = {
-  set: (key: string, value: any): Promise<string> =>
-    localforage.setItem(key, JSON.stringify(value)),
-  get: (key: string): Promise<string> => localforage.getItem(key),
-  remove: (key: string): Promise<void> => localforage.removeItem(key),
-  clear: (): Promise<void> => localforage.clear(),
+const storage = {
+  set: (key: string, value: any): void =>
+    localStorage.setItem(key, JSON.stringify(value)),
+  get: (key: string): string => localStorage.getItem(key),
+  remove: (key: string): void => localStorage.removeItem(key),
+  clear: (): void => localStorage.clear(),
 } as const
 
-export const RimacDb = localforage.createInstance({
-  name: dbName,
-  storeName: 'rimac',
-  description: 'Rimac Database',
-})
+export default storage
