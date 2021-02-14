@@ -7,7 +7,7 @@ const OldPersonal: React.FC = () => {
     <>
       <FormControl className="mb-2">
         <Grid container={true} wrap="nowrap">
-          <Grid item={true} className="mui-select">
+          <Grid item={true} className="mui-document">
             <Select name="documentType" variant="outlined">
               <MenuItem value="DNI">DNI</MenuItem>
               <MenuItem value="RUC">RUC</MenuItem>

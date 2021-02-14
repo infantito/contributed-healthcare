@@ -20,7 +20,7 @@ export interface Values {
 export const initialValues = {
   documentType: 'DNI',
   relative: {
-    type: '',
+    type: '-',
     birthDate: '',
   },
 }

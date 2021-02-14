@@ -22,7 +22,7 @@
     width: 100%;
   }
 
-  .mui-select {
+  .mui-document {
     max-width: calc(var(--spacing) * 10.5);
     width: 100%;
   }
@@ -32,5 +32,9 @@
       color: var(--rimac-title);
       font-weight: normal;
     }
+  }
+
+  .mui-add {
+    width: 100%;
   }
 }
