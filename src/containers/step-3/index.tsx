@@ -1,14 +1,19 @@
 import * as React from 'react'
 import { Form } from 'react-final-form'
+import { useHistory } from 'react-router-dom'
 import { Button, FormControl, Grid, RadioGroup } from '@material-ui/core'
+import { validate, constants } from 'utils'
 import { initialValues, PLANS, Values } from './utils'
 import Plan from './plan'
 import Relatives from './relatives'
-import { validate } from 'utils'
 
 const Step3: React.FC = () => {
+  const history = useHistory()
+
   const handleSubmit = (values: Values) => {
     console.log(values)
+
+    history.push(constants.Routes.THANKS)
   }
 
   return (

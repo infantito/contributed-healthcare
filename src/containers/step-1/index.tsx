@@ -3,13 +3,9 @@ import { useHistory } from 'react-router-dom'
 import { Form } from 'react-final-form'
 import { TextField, Select, Checkboxes } from 'mui-rff'
 import { Button, FormControl, Grid, MenuItem } from '@material-ui/core'
-import { validate } from 'utils'
-import { Routes } from 'utils/constants'
+import { validate, constants } from 'utils'
 import { fields, Values } from './utils'
-
-const initialValues = {
-  documentType: 'DNI',
-}
+import { initialValues } from './constants'
 
 const Step1: React.FC = () => {
   const history = useHistory()
@@ -17,7 +13,7 @@ const Step1: React.FC = () => {
   const handleSubmit = (values: Values) => {
     console.log(values)
 
-    history.push(Routes.RELATIVE)
+    history.push(constants.Routes.RELATIVE)
   }
 
   return (
