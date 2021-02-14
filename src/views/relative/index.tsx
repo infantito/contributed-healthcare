@@ -4,6 +4,7 @@ import { SiteContent } from 'components'
 import { Step2 } from 'containers'
 import { useInsured } from 'hooks'
 import { Routes } from 'utils/constants'
+import Title from './title'
 
 import './styles.scss'
 
@@ -18,12 +19,7 @@ const Relative: React.FC = () => {
     <Grid item={true} sm={8}>
       <div className="step-2 mx-auto py-5">
         <SiteContent>
-          <Typography className="mb-1" variant="h4">
-            Hola, <span>Luisa</span>
-          </Typography>
-          <Typography className="mb-6" variant="subtitle1" component="p">
-            Valida que los datos sean correctos.
-          </Typography>
+          <Title insured={insured} />
           <Typography variant="h6">Datos personales del titular</Typography>
           <div className="mt-3">
             <Step2 />

@@ -5,7 +5,7 @@ import { Radios } from 'mui-rff'
 import { Button, FormControl } from '@material-ui/core'
 import ArrowIcon from '@material-ui/icons/KeyboardArrowRight'
 import { useInsured } from 'hooks'
-import { constants, validate } from 'utils'
+import { constants, storage, validate } from 'utils'
 import AddRelative from './add-relative'
 import NewPersonal from './new-personal'
 import OldPersonal from './old-personal'
@@ -18,6 +18,10 @@ const Step2: React.FC = () => {
 
   const handleSubmit = (values: HealthCareValues) => {
     insured.family = values.relatives
+
+    const keyName = `${insured.id.name}-${insured.id.value}|${insured.login.uuid}`
+
+    storage.set(keyName, insured)
 
     history.push(constants.Routes.PLANS)
   }

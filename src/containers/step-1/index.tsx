@@ -1,4 +1,3 @@
-import * as React from 'react'
 import { useHistory } from 'react-router-dom'
 import { Form } from 'react-final-form'
 import { TextField, Select, Checkboxes } from 'mui-rff'
@@ -23,6 +22,10 @@ const Step1: React.FC = () => {
 
     if (!keptInsured) {
       insured.hasHealthCare = false
+
+      insured.id.name = values.documentType
+
+      insured.id.value = values.documentNumber
 
       storage.set(keyName, insured)
     } else {
