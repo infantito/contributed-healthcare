@@ -11,3 +11,5 @@ export const RELATIVE_AMOUNT = {
   spouse: 40,
   child: 60,
 } as const
+
+export const DOMAIN = process.env.REACT_APP_API_URL
