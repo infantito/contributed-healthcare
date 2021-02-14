@@ -4,8 +4,8 @@
   position: relative;
 
   &__logo {
-    display: block;
-    border-bottom: 1px solid #fc4e55;
+    display: block !important;
+    border-bottom: 1px solid #fc4e55 !important;
   }
 
   &__family {
