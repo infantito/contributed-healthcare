@@ -1,8 +1,10 @@
 import * as React from 'react'
 import { useHistory } from 'react-router-dom'
 import {
+  Box,
   Button,
   Checkbox,
+  CircularProgress,
   FormControl,
   FormControlLabel,
   Grid,
@@ -19,12 +21,18 @@ import { fields, isDebouncedValue, Values } from './utils'
 const Step1: React.FC = () => {
   const [query, setQuery] = React.useState<Values>(fields)
 
+  const [isLoading, setIsLoading] = React.useState(false)
+
   const onSearch = async (values: Values) => {
+    setIsLoading(true)
+
     const keyName = `${values.documentType}-${values.documentNumber}`
 
     const insured: Insured = JSON.parse(storage.get(keyName))
 
     if (insured) {
+      setIsLoading(false)
+
       return setInsured(insured)
     }
 
@@ -33,6 +41,8 @@ const Step1: React.FC = () => {
     const data: Results = await response.json()
 
     setInsured(data.results[0])
+
+    setIsLoading(false)
   }
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -117,6 +127,10 @@ const Step1: React.FC = () => {
               required={true}
               value={query.documentNumber}
               onChange={handleChangeQuery}
+              InputProps={{
+                readOnly: isLoading,
+                endAdornment: isLoading ? <CircularProgress size={20} /> : null,
+              }}
             />
           </Grid>
         </Grid>
