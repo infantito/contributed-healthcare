@@ -64,7 +64,7 @@ const Step1: React.FC = () => {
     }))
 
     if (isValid) {
-      debouncer(query)
+      debouncer({ ...query, documentNumber: value })
     }
   }
 
@@ -77,6 +77,8 @@ const Step1: React.FC = () => {
       insured.id.name = query.documentType
 
       insured.id.value = query.documentNumber
+
+      insured.family = []
 
       storage.set(keyName, insured)
     }

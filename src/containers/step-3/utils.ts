@@ -49,7 +49,3 @@ export const PLANS: PlanProps[] = [
 export interface Values {
   plan: PlanType
 }
-
-export const initialValues: Values = {
-  plan: null,
-}

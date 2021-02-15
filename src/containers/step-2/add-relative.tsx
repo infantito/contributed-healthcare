@@ -17,11 +17,18 @@ import {
 import { MaterialUiPickersDate } from '@material-ui/pickers/typings/date'
 import { RelativeType } from 'utils/constants'
 import Relative from './relative'
-import { initialRelative, Relative as RelativeState } from './utils'
+import { initialRelative, Props, Relative as RelativeState } from './utils'
 
-const AddRelative: React.FC = () => {
+const AddRelative: React.FC<Props> = ({ insured }) => {
   const [relatives, setRelatives] = React.useState<Map<string, RelativeState>>(
-    new Map(),
+    () => {
+      const values: [string, RelativeState][] = insured.family.map(family => [
+        family.id,
+        family,
+      ])
+
+      return new Map(values)
+    },
   )
 
   const [relative, setRelative] = React.useState<RelativeState>(initialRelative)

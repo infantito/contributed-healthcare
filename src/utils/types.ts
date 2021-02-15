@@ -1,4 +1,5 @@
 import { Relative } from 'containers/step-2/utils'
+import { PlanType } from 'containers/step-3/utils'
 
 export enum DocumentType {
   DNI = 'DNI',
@@ -82,6 +83,7 @@ export interface Insured {
   picture: Picture
   nat: string
   family: Relative[]
+  plan: PlanType
   hasHealthCare: boolean
 }
 

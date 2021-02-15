@@ -31,9 +31,11 @@ const Relatives: React.FC<RelativesProps> = props => {
               key={relative.id}
               display="flex"
               justifyContent="space-between"
+              width="100%"
             >
               <Typography>{relative.type}</Typography>
               <Typography>
+                S/{' '}
                 {relative.type === RelativeType.CHILD
                   ? RELATIVE_AMOUNT.CHILD
                   : RELATIVE_AMOUNT.SPOUSE}

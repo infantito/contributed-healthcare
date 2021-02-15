@@ -11,8 +11,6 @@ export interface Relative {
   birthDate: string
 }
 
-export const initialValues = {}
-
 export interface RelativeProps extends Relative {
   id: string
   handleRemove: (id: string) => (event: React.MouseEvent) => void
@@ -62,7 +60,7 @@ export const initialRelative: Relative = {
 }
 
 export const validate = (values: HealthCareValues) => {
-  if (values.people === RelativeKind.FAMILY && values.relatives.length === 0) {
+  if (values.people === RelativeKind.FAMILY && !values.relatives?.length) {
     return {
       people: 'Agregar familiar',
     }

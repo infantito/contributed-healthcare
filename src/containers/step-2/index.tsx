@@ -10,9 +10,9 @@ import NewPersonal from './new-personal'
 import OldPersonal from './old-personal'
 import {
   HealthCareValues,
-  initialValues,
   PEOPLE,
   Props,
+  RelativeKind,
   validate,
 } from './utils'
 
@@ -29,6 +29,13 @@ const Step2: React.FC<Props> = ({ insured }) => {
     storage.set('current', insured)
 
     history.push(constants.Routes.PLANS)
+  }
+
+  const initialValues = { people: null as unknown, relatives: insured.family }
+
+  if (insured.hasHealthCare) {
+    initialValues.people =
+      insured.family.length === 0 ? RelativeKind.ME : RelativeKind.FAMILY
   }
 
   return (
@@ -54,7 +61,7 @@ const Step2: React.FC<Props> = ({ insured }) => {
                 data={PEOPLE}
               />
             </FormControl>
-            <AddRelative />
+            <AddRelative insured={insured} />
             <FormControl className="mt-3">
               <Button
                 variant="contained"
