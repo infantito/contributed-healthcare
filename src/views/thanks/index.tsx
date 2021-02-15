@@ -1,3 +1,4 @@
+import { Link as RouterLink } from 'react-router-dom'
 import { Box, Button, Divider, Typography } from '@material-ui/core'
 import { Routes } from 'utils/constants'
 import man from 'assets/happy-man.png'
@@ -21,10 +22,11 @@ const Thanks: React.FC = () => {
       </Typography>
       <Box className="mt-3" width="100%" textAlign="right">
         <Button
-          variant="contained"
           color="primary"
           className="mui-submit"
-          href={Routes.HOME}
+          component={RouterLink}
+          to={Routes.HOME}
+          variant="outlined"
         >
           Ir a salud rimac
         </Button>

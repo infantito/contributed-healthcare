@@ -1,22 +1,24 @@
 import * as React from 'react'
-import { Router as Switch } from 'react-router-dom'
+import { HashRouter } from 'react-router-dom'
 import { renderRoutes } from 'react-router-config'
 import { Container, Grid } from '@material-ui/core'
-import { createBrowserHistory } from 'history'
+import { createHashHistory } from 'history'
 import { Header } from 'components'
 import routes from './routes'
 
-const history = createBrowserHistory()
+const history = createHashHistory()
 
 const Router: React.FC = () => {
   return (
     <Container className="px-0">
-      <Switch history={history}>
+      {/* 
+  // @ts-ignore */}
+      <HashRouter basename="/" history={history}>
         <Grid container={true} className="no-gutters">
           <Header />
           {renderRoutes(routes)}
         </Grid>
-      </Switch>
+      </HashRouter>
     </Container>
   )
 }
