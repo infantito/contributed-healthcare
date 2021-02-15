@@ -25,14 +25,9 @@ const Relatives: React.FC<RelativesProps> = props => {
             <Typography>Resumen del plan</Typography>
           </Box>
         </AccordionSummary>
-        <AccordionDetails>
-          {props.relatives.map(relative => (
-            <Box
-              key={relative.id}
-              display="flex"
-              justifyContent="space-between"
-              width="100%"
-            >
+        {props.relatives.map(relative => (
+          <AccordionDetails key={relative.id}>
+            <Box display="flex" justifyContent="space-between" width="100%">
               <Typography>{relative.type}</Typography>
               <Typography>
                 S/{' '}
@@ -41,8 +36,8 @@ const Relatives: React.FC<RelativesProps> = props => {
                   : RELATIVE_AMOUNT.SPOUSE}
               </Typography>
             </Box>
-          ))}
-        </AccordionDetails>
+          </AccordionDetails>
+        ))}
       </Accordion>
     </Box>
   )
