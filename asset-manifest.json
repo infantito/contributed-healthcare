@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/contributed-healthcare/static/css/main.eab4caee.chunk.css",
-    "main.js": "/contributed-healthcare/static/js/main.9537f649.chunk.js",
-    "main.js.map": "/contributed-healthcare/static/js/main.9537f649.chunk.js.map",
+    "main.js": "/contributed-healthcare/static/js/main.7bf1d105.chunk.js",
+    "main.js.map": "/contributed-healthcare/static/js/main.7bf1d105.chunk.js.map",
     "runtime-main.js": "/contributed-healthcare/static/js/runtime-main.73b613bd.js",
     "runtime-main.js.map": "/contributed-healthcare/static/js/runtime-main.73b613bd.js.map",
     "static/js/2.8376509e.chunk.js": "/contributed-healthcare/static/js/2.8376509e.chunk.js",
@@ -19,6 +19,6 @@
     "static/js/runtime-main.73b613bd.js",
     "static/js/2.8376509e.chunk.js",
     "static/css/main.eab4caee.chunk.css",
-    "static/js/main.9537f649.chunk.js"
+    "static/js/main.7bf1d105.chunk.js"
   ]
 }
