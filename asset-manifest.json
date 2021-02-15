@@ -1,24 +1,24 @@
 {
   "files": {
     "main.css": "/contributed-healthcare/static/css/main.eab4caee.chunk.css",
-    "main.js": "/contributed-healthcare/static/js/main.1b083c34.chunk.js",
-    "main.js.map": "/contributed-healthcare/static/js/main.1b083c34.chunk.js.map",
+    "main.js": "/contributed-healthcare/static/js/main.7df4c126.chunk.js",
+    "main.js.map": "/contributed-healthcare/static/js/main.7df4c126.chunk.js.map",
     "runtime-main.js": "/contributed-healthcare/static/js/runtime-main.73b613bd.js",
     "runtime-main.js.map": "/contributed-healthcare/static/js/runtime-main.73b613bd.js.map",
-    "static/js/2.7f64ade7.chunk.js": "/contributed-healthcare/static/js/2.7f64ade7.chunk.js",
-    "static/js/2.7f64ade7.chunk.js.map": "/contributed-healthcare/static/js/2.7f64ade7.chunk.js.map",
+    "static/js/2.62bc19a2.chunk.js": "/contributed-healthcare/static/js/2.62bc19a2.chunk.js",
+    "static/js/2.62bc19a2.chunk.js.map": "/contributed-healthcare/static/js/2.62bc19a2.chunk.js.map",
     "static/js/3.d4bd11e9.chunk.js": "/contributed-healthcare/static/js/3.d4bd11e9.chunk.js",
     "static/js/3.d4bd11e9.chunk.js.map": "/contributed-healthcare/static/js/3.d4bd11e9.chunk.js.map",
     "index.html": "/contributed-healthcare/index.html",
     "static/css/main.eab4caee.chunk.css.map": "/contributed-healthcare/static/css/main.eab4caee.chunk.css.map",
-    "static/js/2.7f64ade7.chunk.js.LICENSE.txt": "/contributed-healthcare/static/js/2.7f64ade7.chunk.js.LICENSE.txt",
+    "static/js/2.62bc19a2.chunk.js.LICENSE.txt": "/contributed-healthcare/static/js/2.62bc19a2.chunk.js.LICENSE.txt",
     "static/media/family.50dabdb0.png": "/contributed-healthcare/static/media/family.50dabdb0.png",
     "static/media/happy-man.ce2e192c.png": "/contributed-healthcare/static/media/happy-man.ce2e192c.png"
   },
   "entrypoints": [
     "static/js/runtime-main.73b613bd.js",
-    "static/js/2.7f64ade7.chunk.js",
+    "static/js/2.62bc19a2.chunk.js",
     "static/css/main.eab4caee.chunk.css",
-    "static/js/main.1b083c34.chunk.js"
+    "static/js/main.7df4c126.chunk.js"
   ]
 }
